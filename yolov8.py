@@ -6,7 +6,7 @@ import numpy as np
 model = YOLO("yolov8s-seg.pt")
 
 start = time.time()
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(int(input("cam: ")))
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -20,24 +20,24 @@ while cap.isOpened():
 
     # print(type(frame))
     results = model.predict(source=frame, conf=0.5, show=True)[0]
-    if results.boxes:
-        for obj in results.boxes:
-            # print(obj.xywhn)
-            # print(obj.cls)
-            # print(obj.conf)
-            print(obj.data)
+    # if results.boxes:
+    #     for obj in results.boxes:
+    #         # print(obj.xywhn)
+    #         # print(obj.cls)
+    #         # print(obj.conf)
+    #         print(obj.data)
 
-    if results.masks:
-        print(len(results.masks.segments))
-        for obj in results.masks.segments:
-            print(obj)
-            # print(obj.data)
-        print(results.masks.data)
+    # if results.masks:
+    #     print(len(results.masks.segments))
+    #     for obj in results.masks.segments:
+    #         print(obj)
+    #         # print(obj.data)
+    #     print(results.masks.data)
 
-        det = results.masks.data[0].numpy()
+    #     det = results.masks.data[0].numpy()
 
-    if results.probs:
-        print(results.probs)
+    # if results.probs:
+    #     print(results.probs)
 
     # cv2.imshow("frame", frame)
 
