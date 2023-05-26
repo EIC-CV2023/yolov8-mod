@@ -3,7 +3,7 @@ import cv2
 import time
 import numpy as np
 
-model = YOLO("robotextv2.pt")
+model = YOLO("yolov8s-cls.pt")
 
 start = time.time()
 cap = cv2.VideoCapture(int(input("cam: ")))
